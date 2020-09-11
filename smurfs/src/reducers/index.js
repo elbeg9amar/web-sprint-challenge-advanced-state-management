@@ -1,7 +1,10 @@
 import {
     FETCH_DATA,
     FETCH_DATA_SUCCESS,
-    FETCH_DATA_FAIL
+    FETCH_DATA_FAIL,
+    POST_DATA,
+    POST_DATA_SUCCESS,
+    POST_DATA_FAIL
 } from '../actions/SmurfActions'
 
 
@@ -32,6 +35,27 @@ export  default  (state=initialState, action) => {
                 errorMessage: action.payload.message,
                 loadingData: false
             }
+        case POST_DATA:
+            return{
+                ...state,
+                loadingData: true,
+                errorMessage:''       
+            }
+        case POST_DATA_SUCCESS:
+            return {
+                ...state,
+                loadingData: false,
+                errorMessage:'',
+                datas:[...state.datas,action.payload]
+            }
+        case POST_DATA_FAIL: 
+            return{
+                ...state,
+                errorMessage: action.payload.message,
+                loadingData:false
+            }
+        
         default: return state
     }
 }
+

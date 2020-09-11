@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import {getData} from '../actions/SmurfActions'
+import {getData, postData} from '../actions/SmurfActions'
 
 
 
@@ -9,24 +9,28 @@ import "./App.css";
 import Smurfs from './Smurfs'
 import SmurfInputs from './SmurfInputs'
 
-function App ({getData, errorMessage, loadingData}) {
+function App ({getData, errorMessage, loadingData, postData}) {
 
-    useEffect(() =>{
-      getData()
-    },[getData])
+  useEffect(() =>{
+    getData()
+  },[getData])
+
+  useEffect(() =>{
+    getData()
+  },[getData])
  
     return (
       <div className="App">
         <h1>SMURFS! W/Redux</h1>
-        {
-        !loadingData 
-        ?  <Smurfs />
-        : <img src="https://i.pinimg.com/474x/40/a7/d5/40a7d54f63dd89c338575a17b5f91a71.jpg" alt="waiting pic"/>
-      }
-      {
-        errorMessage !=='' ? <img src={errorMessage} alt="wating"/> : null
-      }
-        <SmurfInputs />
+          {
+            !loadingData 
+            ?  <Smurfs />
+            : <img src="https://i.pinimg.com/474x/40/a7/d5/40a7d54f63dd89c338575a17b5f91a71.jpg" alt="waiting pic"/>
+          }
+          {
+          errorMessage !=='' ? <img src={errorMessage} alt="wating"/> : null
+          }
+        <SmurfInputs postData={postData}/>
       </div>
     );
   
@@ -39,4 +43,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps,{getData})(App);
+export default connect(mapStateToProps,{getData,postData})(App);

@@ -1,17 +1,15 @@
-import React, {useState, useReducer}from 'react'
-
+import React, {useState}from 'react'
 
 
 const initialValue = {
     name:'',
-    age: 0,
-    height:''
+    age: '',
+    height:'',
+    id:''
 
 }
-const SmurfInputs = () => {
+const SmurfInputs = ({postData}) => {
 const [input,setInput] = useState(initialValue)
-
-
 
 const onChange = e => {
     const {name, value} = e.target
@@ -20,16 +18,20 @@ const onChange = e => {
 
  const onSubmit = (e) => {
      e.preventDefault()
-     const NewSmurfs = {
+     const newSmurf = {
          name: input.name.trim(),
-         age: input.age.trim(),
-         height: input.height.trim()
+         age: input.age,
+         height: input.height,
+         id:  Date()
      }
+    
 
-     setInput({...input, NewSmurfs})
-     
-     console.log(input)
+     postData(newSmurf)
+
+     setInput(initialValue)
  }
+
+
 
     return (
         <div>

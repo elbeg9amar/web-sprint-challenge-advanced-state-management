@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from "react-redux";
 
 
+
+
 const Smurfs = ({datas}) => {
+    
+  
+   
+
     return (
         <div>
             {
