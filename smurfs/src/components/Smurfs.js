@@ -1,14 +1,12 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from "react-redux";
 
 
 
 
-const Smurfs = ({datas}) => {
-    
-  
-   
 
+
+const Smurfs = ({datas}) => {
     return (
         <div>
             {
@@ -20,8 +18,7 @@ const Smurfs = ({datas}) => {
                     </div>
                 ))
             }
-        </div>
-            
+        </div>     
     )
 }
 

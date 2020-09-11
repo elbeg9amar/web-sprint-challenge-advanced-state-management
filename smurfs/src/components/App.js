@@ -15,16 +15,17 @@ function App ({getData, errorMessage, loadingData, postData}) {
     getData()
   },[getData])
 
-  useEffect(() =>{
-    getData()
-  },[getData])
+  
+
+
+
  
     return (
       <div className="App">
         <h1>SMURFS! W/Redux</h1>
           {
             !loadingData 
-            ?  <Smurfs />
+            ?  <Smurfs getData={getData}/>
             : <img src="https://i.pinimg.com/474x/40/a7/d5/40a7d54f63dd89c338575a17b5f91a71.jpg" alt="waiting pic"/>
           }
           {

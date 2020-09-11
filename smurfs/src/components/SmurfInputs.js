@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, {useState} from 'react'
 
 
 const initialValue = {
@@ -24,13 +24,9 @@ const onChange = e => {
          height: input.height,
          id:  Date()
      }
-    
-
      postData(newSmurf)
-
      setInput(initialValue)
  }
-
 
 
     return (
