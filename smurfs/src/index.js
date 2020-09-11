@@ -5,12 +5,12 @@ import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
+import reducer from './reducers/index'
+
 import "./index.css";
 import App from "./components/App";
 
-function reducer() {
-    return {}
-}
+
 
 const store = createStore(reducer, applyMiddleware(thunk,logger))
 
