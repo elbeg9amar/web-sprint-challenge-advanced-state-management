@@ -1,16 +1,47 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
+import {getData, postData} from '../actions/SmurfActions'
+
+
+
 import "./App.css";
-class App extends Component {
-  render() {
+import Smurfs from './Smurfs'
+import SmurfInputs from './SmurfInputs'
+
+function App ({getData, errorMessage, loadingData, postData}) {
+
+  useEffect(() =>{
+    getData()
+  },[getData])
+
+  
+
+
+
+ 
     return (
       <div className="App">
         <h1>SMURFS! W/Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+          {
+            !loadingData 
+            ?  <Smurfs getData={getData}/>
+            : <img src="https://i.pinimg.com/474x/40/a7/d5/40a7d54f63dd89c338575a17b5f91a71.jpg" alt="waiting pic"/>
+          }
+          {
+          errorMessage !=='' ? <img src={errorMessage} alt="wating"/> : null
+          }
+        <SmurfInputs postData={postData}/>
       </div>
     );
+  
+}
+
+function mapStateToProps(state) {
+  return {
+    loadingData: state.loadingData,
+    errorMessage: state.errorMessage
   }
 }
 
-export default App;
+export default connect(mapStateToProps,{getData,postData})(App);
