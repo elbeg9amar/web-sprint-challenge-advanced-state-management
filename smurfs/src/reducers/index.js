@@ -10,7 +10,7 @@ const initialState = {
     loadingData:true,
     errorMessage:''
 }
-export default (state=initialState, action) => {
+export  default  (state=initialState, action) => {
     switch(action.type) {
         case FETCH_DATA:
             return{
